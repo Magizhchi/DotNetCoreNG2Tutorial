@@ -1,5 +1,7 @@
 ﻿import { Component } from "@angular/core";
 
+import { CalculatorService } from "./calculator.service";
+
 @
 Component({
     selector: "calculator",
@@ -9,10 +11,14 @@ export class CalculatorComponent {
     title: string = "Welcome to Calculator from Component";
     first: number;
     second: number;
-    constructor() { }
+    result: number;
+    constructor(
+        private calculatorService: CalculatorService
+    ) { }
 
     add(): void {
-        console.log("First Number is "+ this.first);
-        console.log("Second Number is " + this.second);
+        this.calculatorService
+            .addNumbers(this.first, this.second)
+            .then(res => console.log(res));
     }
 }

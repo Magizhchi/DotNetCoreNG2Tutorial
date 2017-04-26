@@ -8,6 +8,8 @@ import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
 import { CalculatorComponent } from './components/calculator/calculator.component';
 
+import { CalculatorService } from './components/calculator/calculator.service';
+
 @NgModule({
     bootstrap: [ AppComponent ],
     declarations: [
@@ -15,6 +17,9 @@ import { CalculatorComponent } from './components/calculator/calculator.componen
         NavMenuComponent,
         HomeComponent,
         CalculatorComponent
+    ],
+    providers: [
+        CalculatorService
     ],
     imports: [
         UniversalModule, // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.
