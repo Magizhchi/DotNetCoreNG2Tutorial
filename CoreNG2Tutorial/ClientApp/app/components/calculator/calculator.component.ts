@@ -19,6 +19,6 @@ export class CalculatorComponent {
     add(): void {
         this.calculatorService
             .addNumbers(this.first, this.second)
-            .then(res => console.log(res));
+            .then(res => this.result = res);
     }
 }
