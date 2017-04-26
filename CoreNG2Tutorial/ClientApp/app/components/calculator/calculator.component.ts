@@ -6,5 +6,6 @@ Component({
     template: require("./calculator.component.html")
 }) 
 export class CalculatorComponent {
+    title: string = "Welcome to Calculator from Component";
     constructor() {}
 }
