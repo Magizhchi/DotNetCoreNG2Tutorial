@@ -20,6 +20,17 @@ export class CalculatorService {
 
     }
 
+    subtractNumbers(first: number, second: number): Promise<any> {
+        return this.http
+            .post(this.calculateUrl + "subtract",
+                JSON.stringify({ "firstNumber": first, "secondNumber": second }),
+                { headers: new Headers({ 'Content-Type': 'application/json' }) })
+            .toPromise()
+            .then(res => res.json())
+            .catch(this.handleError);
+
+    }
+
     private handleError(error: any): Promise<any> {
         console.error("An error occurred", error);
         return Promise.reject(error.message || error);

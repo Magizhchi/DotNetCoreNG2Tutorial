@@ -21,4 +21,10 @@ export class CalculatorComponent {
             .addNumbers(this.first, this.second)
             .then(res => this.result = res);
     }
+
+    subtract(): void {
+        this.calculatorService
+            .subtractNumbers(this.first, this.second)
+            .then(res => this.result = res);
+    }
 }
