@@ -22,6 +22,18 @@ namespace CoreNG2Tutorial.Controllers
         {
             return args.FirstNumber - args.SecondNumber;
         }
+
+        [HttpPost("Multiply")]
+        public int MutltiplyValues([FromBody]Arguments args)
+        {
+            return args.FirstNumber * args.SecondNumber;
+        }
+
+        [HttpPost("divide")]
+        public int DivideValues([FromBody]Arguments args)
+        {
+            return args.FirstNumber / args.SecondNumber;
+        }
         //        // GET: api/values
         //        [HttpGet]
         //        public IEnumerable<string> Get()

@@ -27,4 +27,16 @@ export class CalculatorComponent {
             .subtractNumbers(this.first, this.second)
             .then(res => this.result = res);
     }
+
+    multiply(): void {
+        this.calculatorService
+            .multiplyNumbers(this.first, this.second)
+            .then(res => this.result = res);
+    }
+
+    divide(): void {
+        this.calculatorService
+            .divideNumbers(this.first, this.second)
+            .then(res => this.result = res);
+    }
 }
