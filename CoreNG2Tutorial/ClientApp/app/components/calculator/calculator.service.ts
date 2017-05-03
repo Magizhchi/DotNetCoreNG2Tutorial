@@ -23,7 +23,7 @@ export class CalculatorService {
     subtractNumbers(first: number, second: number): Promise<any> {
         return this.http
             .post(this.calculateUrl + "subtract",
-                JSON.stringify({ "firstNumber": first, "secondNumber": second }),
+            JSON.stringify({ "argument1": first, "argument2": second }),
                 { headers: new Headers({ 'Content-Type': 'application/json' }) })
             .toPromise()
             .then(res => res.json())
@@ -33,7 +33,7 @@ export class CalculatorService {
     multiplyNumbers(first: number, second: number): Promise<any> {
         return this.http
             .post(this.calculateUrl + "multiply",
-                JSON.stringify({ "firstNumber": first, "secondNumber": second }),
+            JSON.stringify({ "argument1": first, "argument2": second }),
                 { headers: new Headers({ 'Content-Type': 'application/json' }) })
             .toPromise()
             .then(res => res.json())
@@ -43,7 +43,7 @@ export class CalculatorService {
     divideNumbers(first: number, second: number): Promise<any> {
         return this.http
             .post(this.calculateUrl + "divide",
-                JSON.stringify({ "firstNumber": first, "secondNumber": second }),
+            JSON.stringify({ "argument1": first, "argument2": second }),
                 { headers: new Headers({ 'Content-Type': 'application/json' }) })
             .toPromise()
             .then(res => res.json())

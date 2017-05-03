@@ -31,53 +31,58 @@ namespace CoreNG2Tutorial.Controllers
     }
 
         [HttpPost("subtract")]
-        public int SubtractValues([FromBody]Arguments args)
+        public int SubtractValues([FromBody]History item)
         {
-            return args.FirstNumber - args.SecondNumber;
+            using (var context = new NG2TutorialContext())
+            {
+                if (item == null)
+                {
+                    return -9999;
+                }
+                item.Result = item.Argument1 - item.Argument2;
+                item.OperationId = 1;
+
+                context.History.Add(item);
+                context.SaveChanges();
+                return item.Result.Value;
+            }
         }
 
         [HttpPost("Multiply")]
-        public int MutltiplyValues([FromBody]Arguments args)
+        public int MutltiplyValues([FromBody]History item)
         {
-            return args.FirstNumber * args.SecondNumber;
+            using (var context = new NG2TutorialContext())
+            {
+                if (item == null)
+                {
+                    return -9999;
+                }
+                item.Result = item.Argument1 * item.Argument2;
+                item.OperationId = 1;
+
+                context.History.Add(item);
+                context.SaveChanges();
+                return item.Result.Value;
+            }
         }
 
         [HttpPost("divide")]
-        public int DivideValues([FromBody]Arguments args)
+        public int DivideValues([FromBody]History item)
         {
-            return args.FirstNumber / args.SecondNumber;
+            using (var context = new NG2TutorialContext())
+            {
+                if (item == null)
+                {
+                    return -9999;
+                }
+                item.Result = item.Argument1 / item.Argument2;
+                item.OperationId = 1;
+
+                context.History.Add(item);
+                context.SaveChanges();
+                return item.Result.Value;
+            }
         }
-        //        // GET: api/values
-        //        [HttpGet]
-        //        public IEnumerable<string> Get()
-        //        {
-        //            return new string[] { "value1", "value2" };
-        //        }
-        //
-        //        // GET api/values/5
-        //        [HttpGet("{id}")]
-        //        public string Get(int id)
-        //        {
-        //            return "value";
-        //        }
-        //
-        //        // POST api/values
-        //        [HttpPost]
-        //        public void Post([FromBody]string value)
-        //        {
-        //        }
-        //
-        //        // PUT api/values/5
-        //        [HttpPut("{id}")]
-        //        public void Put(int id, [FromBody]string value)
-        //        {
-        //        }
-        //
-        //        // DELETE api/values/5
-        //        [HttpDelete("{id}")]
-        //        public void Delete(int id)
-        //        {
-        //        }
     }
 
     public class Arguments
