@@ -12,7 +12,7 @@ export class CalculatorService {
     addNumbers(first: number, second: number): Promise<any> {
         return this.http
                    .post(this.calculateUrl + "add",
-                         JSON.stringify({ "firstNumber": first, "secondNumber": second }),
+                         JSON.stringify({ "argument1": first, "argument2": second }),
                          { headers: new Headers({ 'Content-Type': 'application/json' }) })
                    .toPromise()
                    .then(res => res.json())

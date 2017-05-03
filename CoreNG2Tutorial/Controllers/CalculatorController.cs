@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CoreNG2Tutorial.Models;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
@@ -12,10 +13,22 @@ namespace CoreNG2Tutorial.Controllers
     public class CalculatorController : Controller
     {
         [HttpPost("add")]
-        public int AddValues([FromBody]Arguments args)
+        public int AddValues([FromBody]History item)
         {
-            return args.FirstNumber + args.SecondNumber;
-        }
+            using (var context = new NG2TutorialContext())
+            {
+                if (item == null)
+                {
+                    return -9999;
+                }
+                item.Result = item.Argument1 + item.Argument2;
+                item.OperationId = 1;
+
+                context.History.Add(item);
+                context.SaveChanges();
+                return item.Result.Value;
+            }
+    }
 
         [HttpPost("subtract")]
         public int SubtractValues([FromBody]Arguments args)
